@@ -1,23 +1,17 @@
 ---
+import GaugeSlider from './GaugeSlider.tsx';
 export interface Props {
 	title: string;
 	body: string;
-	href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title, body } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+	<div class='container'>
+		<GaugeSlider client:load title={title}/>
+	</div>
 </li>
 <style>
 	.link-card {
@@ -31,9 +25,10 @@ const { href, title, body } = Astro.props;
 		background-position: 100%;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+		position: relative;
 	}
 
-	.link-card > a {
+	.container {
 		width: 100%;
 		text-decoration: none;
 		line-height: 1.4;
@@ -43,6 +38,7 @@ const { href, title, body } = Astro.props;
 		background-color: white;
 		opacity: 0.8;
 	}
+
 	h2 {
 		margin: 0;
 		font-size: 1.25rem;
