@@ -26,6 +26,7 @@ const GaugeSlider: FunctionComponent<GaugeSliderProps> = (props) => {
   const handleChange = (event: any, newValue: number | number[]) => {
     setValue(newValue as number);
   };
+
   return (
     <Box>
       <Typography gutterBottom>{props.title}</Typography>
@@ -36,6 +37,7 @@ const GaugeSlider: FunctionComponent<GaugeSliderProps> = (props) => {
         }}
         aria-label="custom thumb label"
         defaultValue={20}
+        onChange={handleChange}
       />
     </Box>
   );
